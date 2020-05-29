@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editor</title>
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/limonte-sweetalert2/8.11.8/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.0/css/bootstrap-dialog.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/chosen/1.8.8.rc6/chosen.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-daterangepicker/3.0.5/daterangepicker.min.css" rel="stylesheet">
+    <link href="./css/jquery.autocompleter.css" rel="stylesheet">
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.0/js/bootstrap-dialog.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+    <script src="https://cdn.bootcss.com/chosen/1.8.8.rc6/chosen.jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+    <script src="https://cdn.bootcss.com/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.bootcss.com/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+    <script src="https://unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+    <script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-daterangepicker/3.0.5/moment.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"></script>
+    <script src="./js/jquery.autocompleter.js"></script>
+    <style>
+        p {
+            color: red;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <span id="editor"></span>
+
+    <p>下拉选择</p>
+    <div style="width: 100%; margin:20px">
+        <select multiple="multiple" style="width:100%; " class="autoAddOption">
+            <option>一室一厅</option>
+            <option>两室一厅</option>
+            <option>三室一厅</option>
+        </select>
+    </div>
+
+    <p>chosen下拉选择</p>
+    <div>
+        <select class="chosen-select" data-placeholder="Choose a Country...">
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Afghanistan</option>
+        </select>
+    </div>
+
+    <p>文本复制</p>
+    <div>
+        <input id="foo" readonly value="https://github.com/zenorocha/clipboard.js.git">
+
+        <!-- Trigger -->
+        <button class="copyBtn" data-clipboard-action="copy" data-clipboard-target="#foo">
+            copy文本框的内容
+        </button>
+    </div>
+
+    <p>bootstrap-dialog3 模态框</p>
+    <div>
+        <a href="http://nakupanda.github.io/bootstrap3-dialog/">样例学习</a>
+        <button id="tm" class="btn btn-primary">点我显示模态框</button>
+    </div>
+
+    <p>daterangepicker时间插件</p>
+    <div>
+        <span>默认两个日历</span><br>
+        <input class="date1" name="date1" placeholder="请输入一个日期" /><br>
+        <span>设置单个日历</span><br>
+        <input class="date2" name="date2" placeholder="请输入一个日期" />
+    </div>
+
+    <p>autocomplete插件</p>
+    <div>
+        <input name="autocompleted" id="autocompletedInput" placeholder="请输入值自动匹配" />
+    </div>
+
+    
+    <div style="margin-top:500px;"></div>
+</body>
+<script>
+    $(function () {
+        var E = window.wangEditor;
+        var editor = new E("#editor");
+        editor.create();
+        editor.txt.html("hello ljlhnick");
+        var content = editor.txt.html();
+
+        // swal("学习常用基础的前端插件---一个参数");
+
+        // swal("标题是","这是文本---两个参数");
+
+        // swal("四种提示类型","文本","success"); //error info warning
+
+        //参数为对象形式且有回调函数
+        // swal({
+        //     title : "支付成功",
+        //     text: "参数为对象的形式",
+        //     icon : "info",
+        //     buttons : true, 
+        //     dangerMode: true
+        // }).then((value) => {
+        //     swal(`The returned value is: ${value}`);
+        // });
+
+        //高级设置
+        // swal("按钮重置值", {
+        //     buttons: [true, "Aww yiss!"],
+        // });
+
+        //获取文本框的值 -- 高级应用参与ajax请求
+        // swal("Write something here:", {
+        //     content: "input",
+        // })
+        // .then((value) => {
+        //     swal(`You typed: ${value}`);
+        // });
+
+        // Swal.fire("sweetalert的基础用法","类似与版本1","error");  //success info error question
+
+        // Swal.fire(
+        // 'The Internet?', //title
+        // 'That thing is still around?', //text
+        // 'question'  //icon 
+        // )
+
+        //对象传参
+        // Swal.fire({
+        //     type: 'info',
+        //     title: 'Oops...',
+        //     text: 'Something went wrong!',
+        //     footer: '<a href>Why do I have this issue?</a>'
+        // })
+
+        //弹出模态框
+        // Swal.fire({
+        //     imageUrl: 'https://placeholder.pics/svg/300x1500',
+        //     imageHeight: 100,
+        //     imageWidth: 600,
+        //     imageAlt: 'A tall image'
+        // })
+
+        //对话框
+        // Swal.fire({
+        //     position: 'top-end',
+        //     type: 'success',
+        //     title: 'Your work has been saved',
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // })
+
+        //a toast for info,success,warning,error
+        //toastr.info("toastr");
+
+        // toastr.warning("toastr","标题测试呀呀呀呀",{
+        //     timeOut: 5000,
+        //     closeButton:true,
+        //     closeHtml: `<button>关闭</button>`,
+        //     closeMethod: 'fadeOut',
+        //     closeDuration: 500,
+        //     closeEasing: 'swing',
+        //     newestOnTop: false
+        // });
+
+        $('img.lazy').lazyload({
+            effect: 'fadeIn',
+            event: 'click'
+        })
+
+        $(".autoAddOption").multiselect({
+            buttonWidth: 195,  //选择框的大小
+            includeSelectAllOption: true,//是否现实全选
+            nonSelectedText: '请至少选择一列',  //没有进行选择的提示语
+            maxHeight: 300
+        });
+
+        $(".chosen-select").chosen();
+
+        new ClipboardJS('.copyBtn');
+
+
+        var tableData = [{
+
+            "ID": "P0460",
+            "NAME": "齐莹",
+            "PHOTO": "./2.jpg"
+        }, {
+            "ID": "P0324",
+            "NAME": "唐宁",
+            "PHOTO": "./1.png"
+        }]
+
+        // $('#teaListTable').DataTable({
+        //     data: tableData,
+        //     "stateSave": true,
+        //     "searching": false,
+        //     "ordering": true,
+        //     "destory": false,
+        //     "serverSide": true,
+        //     "columns": [{
+        //         data: ""
+        //     }, {
+        //         data: "ID"
+        //     }, {
+        //         data: "NAME"
+        //     }, {
+        //         data: "PHOTO"
+        //     }, {
+        //         data: ""
+        //     }],
+        // })
+
+        $('#tm').on('click', function () {
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_DANGER,
+                message: '你确定要删除吗？',
+                size: BootstrapDialog.SIZE_NORMAL,
+                buttons: [{
+                    label: '确定',
+                    action: function (dialog) {
+                        dialog.close();
+                    }
+                }, {
+                    label: '取消',
+                    action: function (dialog) {
+                        dialog.close();
+                    }
+                }]
+            });
+        })
+
+
+        $(".imgChange img").smartZoom({
+            'left': '0px'
+        });
+
+        //minDate、maxDate、showDropdowns、minYear、maxYear、maxSpan
+        $('.date1').daterangepicker({
+            "startDate": "09/14/2019",
+            "endDate": "09/20/2019",
+            "maxSpan": {
+                "days": 5
+            },
+            "showDropdowns": true,
+            "minYear": 2017,
+            "maxYear": 2020,
+            "timePicker": true
+        }, function (start, end, label) {
+            console.log(`New date range selected: ${start.format('YYYY-MM-DD')} to ${end.format('YYYY-MM-DD')}`);
+        });
+
+        $('.date2').daterangepicker({
+            "startDate": "09/14/2019",
+            "endDate": "09/20/2019",
+            "singleDatePicker": true
+        }, function (start, end, label) {
+            console.log(`New date range selected: ${start.format('YYYY-MM-DD')} to ${end.format('YYYY-MM-DD')}`);
+        });
+
+        var data = [
+            { "value": "1", "label": "one" },
+            { "value": "2", "label": "two" },
+            { "value": "3", "label": "three" },
+            { "value": "4", "label": "one" },
+            { "value": "5", "label": "one" },
+            { "value": "6", "label": "one" }
+        ];
+
+        $("#autocompletedInput").autocompleter({
+            // marker for autocomplete matches
+            //highlightMatches: true,
+
+            // object to local or url to remote search
+            source: data,
+
+            // show hint
+            //hint: true,
+
+            // abort source if empty field
+            //empty: false,
+
+            // max results
+            limit: 3,
+        });
+
+
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState == 'hidden') {
+                normal_title = document.title;
+                document.title = '你有正在进行的操作哦！';
+            } else document.title = normal_title;
+        });
+    });
+</script>
+
+</html>
