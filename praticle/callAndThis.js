@@ -7,7 +7,7 @@ var person = {
     }
 };
 
-console.log("first", age, age * 2);
+console.log("first", age);
 console.log("second", person.getAge()) // this指向被调用者 --- person  它的age是20
 
 var b = person.getAge;
@@ -25,3 +25,34 @@ function getAge2() {
 }
 getAge2();
 console.log("sixth", age) //10
+
+
+//apply call求最大值最小值, 求和
+var numbers = [5, 255, 656, 5464, -699674, 87, -11, 4656];
+console.log("max value => ", Math.max.apply(this, numbers), Math.min.apply(this, numbers));
+console.log("sum", numbers.reduce((x, y) => x + y));
+
+
+//冒泡排序
+for (let i = 0; i < numbers.length - 1; i++) {
+    for (let j = 0; j < numbers.length - 1; j++) {
+        if (numbers[j] > numbers[j + 1]) {
+            let temp = numbers[j];
+            numbers[j] = numbers[j + 1];
+            numbers[j + 1] = temp;
+        }
+    }
+}
+console.log("sort afetr", numbers);
+
+//选择排序
+for (let i = 0; i < numbers.length - 1; i++) {
+    for (let j = i + 1; j < numbers.length - 1; j++) {
+        if (numbers[i] > numbers[j]) {
+            let temp = numbers[i];
+            numbers[i] = numbers[j];
+            numbers[j] = temp;
+        }
+    }
+}
+console.log("sort afte", numbers);
