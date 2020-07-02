@@ -43,6 +43,45 @@ console.log(
     numbers.reduce((x, y) => x + y)
 );
 
+// 求和函数
+function sum(arr) {
+    return arr.reduce((x, y) => {
+        x + y;
+    })
+}
+
+//数组去重
+function noRepeate(arr) {
+    return arr.filter((val, index, arr) => {
+        return arr.indexof(val) == index;
+    })
+}
+
+var tmp = [];
+for (var i = 0; i < arr.length; i++) {
+    if (tmp.indexof(arr[i]) == -1) {
+        tmp.push(arr[i]);
+    }
+
+    if (tmp.includes(arr[i])) {
+        tmp.push(arr[i]);
+    }
+
+}
+
+arr.sort();
+for (var i = 0; i < arr.length - 1; i++) {
+    if (arr[i] != arr[i + 1]) {
+        tmp.push(arr[i]);
+    }
+
+}
+
+Array.from(new Set(arr))
+
+//数组拉平去重排序
+Array.from(new Set(arr.flat(Infinity))).sort((a, b) => a - b);
+
 //冒泡排序
 for (let i = 0; i < numbers.length - 1; i++) {
     for (let j = 0; j < numbers.length - 1; j++) {
@@ -108,3 +147,10 @@ new Promise((resolve, reject) => {
 }).then(() => {
     console.log("then12", 6)
 })
+
+//按照对象的某个属性排序
+function sortByAge(obj) {
+    return obj.sort((obj1, obj2) => {
+        return obj1.age < obj2.age;
+    })
+}
